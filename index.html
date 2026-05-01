@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autopilot Channels</title>
+  <meta name="description" content="I hand you a pre-monetized YouTube channel and the full system to scale it past $10K/month in under 90 days. Course, AI workflow, scaling playbook, 24/7 access to me. One payment, $297.">
+  <meta name="theme-color" content="#04101e">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Autopilot Channels — Scale a faceless YouTube channel to $10K/month in under 90 days">
+  <meta property="og:description" content="A pre-monetized channel + the full system to scale it past $10K/mo in under 90 days. Without showing your face, without quitting your job day one.">
+  <meta property="og:image" content="warehouse.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Autopilot Channels — Scale a faceless YouTube channel to $10K/month in under 90 days">
+  <meta name="twitter:description" content="The pre-monetized channel + the system to scale it. Built for people grinding a 9-to-5 who want out.">
+
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304101e'/%3E%3Cpath d='M22 14h20l-10 18 10 18H22l10-18z' fill='%234f9eff'/%3E%3C/svg%3E">
+
+  <!-- Prevent FOUC: only hide pre-anim elements if JS is on -->
+  <script>document.documentElement.classList.add('js')</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top urgency bar with countdown + program slot scarcity -->
+  <div class="urgency-bar">
+    <span class="bar-channels"><b id="channelsLeft">14</b> channels left in this cohort</span>
+    <span class="bar-divider"></span>
+    <span>Launch price closes in</span>
+    <span class="countdown" id="countdown">
+      <span><b id="cd-h">--</b>h</span>
+      <span><b id="cd-m">--</b>m</span>
+      <span><b id="cd-s">--</b>s</span>
+    </span>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="particles"></canvas>
+    <div class="hero-glow"></div>
+
+    <div class="container">
+      <div class="pill hero-tag" data-anim="rise">
+        <span class="dot-pulse"></span>
+        <span>200+ students inside the program right now, and none of them show their face on camera</span>
+      </div>
+
+      <h1 class="hero-title" data-anim="rise">
+        I hand you a <em class="serif blue">pre-monetized YouTube channel</em>
+        and the system to scale it past <em class="serif blue">$10K/month in under 90 days</em>.
+      </h1>
+
+      <p class="hero-sub" data-anim="rise">
+        You don't show your face and you don't build an audience first. The channel is already approved by YouTube when it lands in your account, so your first upload pays you the same day. It's the same setup that took my own channels past $42K in a single month.
+      </p>
+
+      <div class="step-badge" data-anim="rise">7-min walkthrough</div>
+
+      <div class="vsl" data-anim="rise" id="vsl">
+        <div class="vsl-overlay">How it works and what your first 30 days look like</div>
+        <button class="vsl-play" aria-label="Play video">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="hero-cta" data-anim="rise">
+        <a class="btn-primary big" href="#stack">
+          Show me how it works
+        </a>
+        <p class="price-anchor">
+          The screenshots from real student channels are further down.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <div class="pill section-tag center">Why the math is broken</div>
+      <h2 class="center">
+        You already know faceless YouTube can do <em class="serif blue">$10K a month</em>.<br>
+        Almost nobody actually gets there.
+      </h2>
+      <p class="center muted big-p">Most channels die before they pay a cent. I get the same DM from a new person every week.</p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="x-icon">×</div>
+          <h3>You upload for months and views stay flat</h3>
+          <p>The advice you're following is two algorithm updates behind. Someone else's slop pulls a million views and you can't tell what they're doing differently.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="x-icon">×</div>
+          <h3>YouTube might never approve you for monetization</h3>
+          <p>1,000 subs and 4,000 watch hours just gets you to the review queue. Plenty of people grind for six months, send the application, and get rejected for reasons YouTube barely explains. Six months of work, zero dollars.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="x-icon">×</div>
+          <h3>You keep picking the wrong niche</h3>
+          <p>Six months in you find out it pays forty cents per thousand views. You switch, you start over, you burn another year.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="x-icon">×</div>
+          <h3>The courses you bought taught you nothing usable</h3>
+          <p>Recycled slides and motivation. By the time you finished you still didn't know what to record on Monday morning.</p>
+        </div>
+      </div>
+
+      <p class="center muted" style="margin-top:36px;font-size:17px">
+        If two of those just hit, you're exactly who I built this for.
+      </p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-photo">
+          <figure class="photo-frame">
+            <img src="warehouse.png" alt="The warehouse where I worked before any of this">
+            <figcaption>The warehouse I was clocking into every morning. Picture taken on my last shift.</figcaption>
+          </figure>
+        </div>
+        <div class="story-text">
+          <div class="pill section-tag">By Ryan</div>
+          <h2>From <em class="serif blue">that warehouse</em> to seven faceless channels</h2>
+
+          <p class="muted">
+            Three years ago I was clocking into that warehouse for €1,400 a month. Most of it went on rent before I could spend a cent. I was 22 and already tired of how the next forty years would probably go.
+          </p>
+          <p class="muted">
+            A friend showed me a "top 10 luxury cars" channel pulling $11K a month. Faceless, mostly AI. I couldn't stop thinking about it. Three months later AdSense paid me $1,847 from my first channel. I quit the warehouse a week later.
+          </p>
+          <p class="muted">
+            Eighteen months in I had seven channels and my best month was $42K. By then I kept seeing the same wall hit everyone else's channels, the one that almost killed mine too. You upload for three months without earning a cent and by month two you start wondering if you're an idiot.
+          </p>
+          <p class="story-hook">
+            So I cut that wait out for you. The channel hits your account already monetized. Your first video earns the same day you publish it.
+          </p>
+          <p class="story-cta-line">
+            <a href="#stack">See what's inside the program →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF GALLERY - real YouTube Studio screenshots -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="pill section-tag center">Student results</div>
+      <h2 class="center">
+        Receipts from <em class="serif blue">inside the program</em>
+      </h2>
+      <p class="center muted big-p">Pulled straight from YouTube Studio. Some are mine, some belong to people who joined the program.</p>
+
+      <div class="proof-headline">
+        <figure class="proof-card hero-proof">
+          <img src="proof/student-28338.png" alt="Student channel: $28,338.58 in 28 days">
+          <figcaption>
+            <span class="proof-label">Student channel</span>
+            <span class="proof-num">$28,338.58</span>
+            <span class="proof-meta">28 days · 212.3M views · +17.7K subs · Nov–Dec 2025</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="proof-gallery">
+        <figure class="proof-card">
+          <img src="proof/student-23037.png" alt="Student channel: $23,037.21 in 28 days">
+          <figcaption>
+            <span class="proof-label">Student channel</span>
+            <span class="proof-num">$23,037.21</span>
+            <span class="proof-meta">28 days · 3.8M views · +20.8K subs</span>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <img src="proof/student-12910-singlevideo.png" alt="Single video: $12,910 from 326K views">
+          <figcaption>
+            <span class="proof-label">One student video</span>
+            <span class="proof-num">$12,910.00</span>
+            <span class="proof-meta">326,105 views · 528.6K watch hours</span>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <img src="proof/student-8030.png" alt="Student channel: 38.7M lifetime views">
+          <figcaption>
+            <span class="proof-label">Student channel</span>
+            <span class="proof-num">38.7M views</span>
+            <span class="proof-meta">+18.6K subs · $8,030 in shown window</span>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <img src="proof/ryan-13735.png" alt="Ryan's channel: €13,735.96 in 10 days">
+          <figcaption>
+            <span class="proof-label">My own channel</span>
+            <span class="proof-num">€13,735.96</span>
+            <span class="proof-meta">10 days · 2.1M views · +10.5K subs · Apr 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <img src="proof/ryan-9075.png" alt="Ryan's channel: $9,075.52 in 28 days">
+          <figcaption>
+            <span class="proof-label">My own channel</span>
+            <span class="proof-num">$9,075.52</span>
+            <span class="proof-meta">28 days · 1.6M views · +14.4K subs</span>
+          </figcaption>
+        </figure>
+        <figure class="proof-card">
+          <img src="proof/ryan-5879.png" alt="Ryan's channel: $5,879.23 in 28 days">
+          <figcaption>
+            <span class="proof-label">My own channel</span>
+            <span class="proof-num">$5,879.23</span>
+            <span class="proof-meta">28 days · 1.6M views · +10.2K subs</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="center muted small" style="margin-top:32px">Click any screenshot to see it full size.</p>
+    </div>
+  </section>
+
+  <!-- VALUE STACK -->
+  <section id="stack" class="stack">
+    <div class="container">
+      <div class="pill section-tag center">What you get</div>
+      <h2 class="center">
+        Everything you need to hit <em class="serif blue">$10K/month in 90 days</em>
+      </h2>
+
+      <div class="stack-list">
+        <div class="stack-item highlight">
+          <div class="stack-num">★</div>
+          <div class="stack-body">
+            <h3>A pre-monetized YouTube channel in your name</h3>
+            <p>Already approved by YouTube and earning from your first upload.</p>
+          </div>
+          <div class="stack-price"><s>$1,497</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">1</div>
+          <div class="stack-body">
+            <h3>The Autopilot Channels course</h3>
+            <p>8 modules, 22 hours. The full workflow behind my seven channels.</p>
+          </div>
+          <div class="stack-price"><s>$497</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">2</div>
+          <div class="stack-body">
+            <h3>The 90-day scaling playbook to $10K/month</h3>
+            <p>What to do every week for twelve weeks.</p>
+          </div>
+          <div class="stack-price"><s>$497</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">3</div>
+          <div class="stack-body">
+            <h3>The 50-niche shortlist for 2026</h3>
+            <p>Pick yours in thirty minutes.</p>
+          </div>
+          <div class="stack-price"><s>$197</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">4</div>
+          <div class="stack-body">
+            <h3>134 AI prompts + the AI voice setup</h3>
+            <p>Everything I use to write and produce. Updated every quarter.</p>
+          </div>
+          <div class="stack-price"><s>$297</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">5</div>
+          <div class="stack-body">
+            <h3>My private one-click video software</h3>
+            <p>You won't find this anywhere else. Only people inside the program get it.</p>
+          </div>
+          <div class="stack-price"><s>$997</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">6</div>
+          <div class="stack-body">
+            <h3>The private systems that took me past $43K a month</h3>
+            <p>The stuff I'd never post on YouTube or Twitter, kept inside the program.</p>
+          </div>
+          <div class="stack-price"><s>$497</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">7</div>
+          <div class="stack-body">
+            <h3>The portfolio playbook for your next channels</h3>
+            <p>How to clone the system onto channels #2 and #3.</p>
+          </div>
+          <div class="stack-price"><s>$297</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">8</div>
+          <div class="stack-body">
+            <h3>Private community of active students</h3>
+            <p>Daily peer review and what's working right now.</p>
+          </div>
+          <div class="stack-price"><s>$197</s></div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-num">9</div>
+          <div class="stack-body">
+            <h3>Direct access to me, 24/7</h3>
+            <p>Message me directly. I read and reply myself.</p>
+          </div>
+          <div class="stack-price"><s>$397</s></div>
+        </div>
+
+        <div class="stack-item bonus">
+          <div class="stack-num">⚡</div>
+          <div class="stack-body">
+            <h3>Bonus: 30-min channel audit from me <small>(only if you buy today)</small></h3>
+            <p>Recorded walkthrough of your channel in week one.</p>
+          </div>
+          <div class="stack-price"><s>$250</s></div>
+        </div>
+      </div>
+
+      <div class="stack-total">
+        <div class="total-row"><span>Total value:</span><span><s>$5,620</s></span></div>
+        <div class="total-row big"><span>Today, one payment:</span><span class="blue">$297</span></div>
+        <p class="muted small">Pay once. Yours for life.</p>
+      </div>
+
+      <div id="checkout"></div>
+      <div class="cta-wrap">
+        <a class="btn-primary big" href="https://buy.stripe.com/dRmeV71nw388cNCduX6oo00" target="_blank" rel="noopener">
+          Yes, I want this
+        </a>
+      </div>
+      <p class="delivery-guarantee">
+        The channel lands in your account the same day you pay.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOR WHO / NOT -->
+  <section class="for-who">
+    <div class="container">
+      <h2 class="center">
+        Who this <em class="serif blue">actually works for</em>
+      </h2>
+
+      <div class="for-grid">
+        <div class="for-col yes">
+          <h3>Yes, if</h3>
+          <ul>
+            <li>You want income that doesn't depend on a job or showing your face online</li>
+            <li>You're after a real shot at $10K/month from something that isn't crypto or trading</li>
+            <li>You can carve out 60 to 90 minutes a day for the first 90 days</li>
+            <li>You'd rather a system you can actually run than another theory course</li>
+            <li>You want the first upload to pay you, not three months of free work first</li>
+          </ul>
+        </div>
+        <div class="for-col no">
+          <h3>No, if</h3>
+          <ul>
+            <li>You want $10K/month tomorrow without doing the 90 days</li>
+            <li>You came looking for crypto pumps, trading signals or affiliate hype</li>
+            <li>You buy courses and never open them</li>
+            <li>You won't touch AI tools (the whole workflow runs on them)</li>
+            <li>You want to be a creator with a face and a personal brand</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cta-wrap" style="margin-top:48px">
+        <a class="btn-primary big" href="https://buy.stripe.com/dRmeV71nw388cNCduX6oo00" target="_blank" rel="noopener">Yes, I want this</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="pill section-tag center">FAQ</div>
+      <h2 class="center">
+        The questions <em class="serif blue">I get every week</em>
+      </h2>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>Is the channel transfer legitimate?<span class="plus"></span></summary>
+          <p>Yes. YouTube has an official transfer process between Google accounts. When it completes, YouTube sends you written confirmation and the channel sits in your name from that point on. I take zero revenue share. Every dollar the channel earns is yours.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>Is the channel really already monetized?<span class="plus"></span></summary>
+          <p>Yes. The channel is already approved by YouTube and inside the Partner Program when it lands in your account. Your first upload pays you. Plenty of people grind for months, finally hit the requirements, then YouTube rejects them anyway with no real explanation.</p>
+        </details>
+        <details class="faq-item" open>
+          <summary>I've taken other YouTube courses and got nowhere. Why is this different?<span class="plus"></span></summary>
+          <p>Because you don't start from zero. Most people quit before YouTube ever pays them. They upload for three months, get rejected, and walk. That's the wall. You're already over it on day one.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much will I make?<span class="plus"></span></summary>
+          <p>Students who follow the 90-day playbook hit $10K/month by day 90. If you skip steps or pick a low-CPM niche, expect less. The roadmap is mine; the speed depends on you.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need YouTube or editing experience?<span class="plus"></span></summary>
+          <p>None. The production runs on AI. You ship your first video without ever opening Premiere or CapCut.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much time does this take per day?<span class="plus"></span></summary>
+          <p>60 to 90 minutes a day for the first month. About an hour a day after that, once you find your rhythm.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does the 24/7 access to you actually work?<span class="plus"></span></summary>
+          <p>You message me directly with anything: niche picks, hooks that aren't landing, scripts you want a second pair of eyes on. I read everything myself and reply, usually within a few hours.</p>
+        </details>
+        <details class="faq-item">
+          <summary>When do I get access?<span class="plus"></span></summary>
+          <p>The second your payment clears you get everything in one go — the channel, the full course, the prompts and the playbooks.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is this within YouTube's terms of service?<span class="plus"></span></summary>
+          <p>Yes. YouTube has an official channel-transfer flow inside Google's Brand Account system, and the channel moves to your account through that flow. AI-assisted content is allowed on the platform. The playbook walks you through how to label it correctly when needed.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="center">
+        $297 ends when the timer hits <em class="serif blue">zero</em>
+      </h2>
+      <p class="center muted big-p">After the timer, it's $497 and the audit bonus is gone. Same product either way.</p>
+
+      <div class="final-cta-actions">
+        <p class="final-price">
+          Today: <b>$297</b> &nbsp;·&nbsp; tomorrow: <s>$497</s>
+        </p>
+        <a class="btn-primary big full" href="https://buy.stripe.com/dRmeV71nw388cNCduX6oo00" target="_blank" rel="noopener">Yes, I want this</a>
+
+        <p class="trust-line">Instant delivery the second your payment clears.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="muted small">© Autopilot Channels</p>
+  </footer>
+
+  <!-- Lightbox for proof screenshots -->
+  <div class="proof-lightbox" id="proofLightbox" aria-hidden="true">
+    <button class="close" aria-label="Close">×</button>
+    <img src="" alt="" id="proofLightboxImg">
+  </div>
+
+  <!-- Sticky mobile CTA -->
+  <a class="sticky-cta" href="https://buy.stripe.com/dRmeV71nw388cNCduX6oo00" target="_blank" rel="noopener">
+    <span class="sc-price"><s>$497</s> <b>$297</b></span>
+    <span class="sc-btn">Yes, I want this</span>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
