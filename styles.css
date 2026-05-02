@@ -198,19 +198,19 @@ span.blue{color:#4f9eff !important}
 }
 .vsl{
   position:relative;width:100%;max-width:820px;aspect-ratio:16/9;
-  background:linear-gradient(180deg,#0a0a0a,#16202e);
+  background:#0a0a0a center/cover no-repeat;
   border-radius:14px;overflow:hidden;
   box-shadow:
     0 0 0 1px rgba(79,158,255,.18),
     0 30px 80px rgba(0,0,0,.55),
     0 0 100px rgba(79,158,255,.08);
 }
-.vsl-overlay{
-  position:absolute;left:0;right:0;bottom:32px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:clamp(13px,1.3vw,16px);color:rgba(255,255,255,.6);
-  font-weight:500;letter-spacing:.01em;text-align:center;padding:0 40px;line-height:1.4;
+.vsl::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.35) 100%);
+  pointer-events:none;
 }
+.vsl.playing::after{display:none}
 .vsl-play{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:84px;height:84px;border-radius:50%;border:0;
@@ -223,7 +223,6 @@ span.blue{color:#4f9eff !important}
   box-shadow:0 10px 32px rgba(79,158,255,.7),0 0 0 12px rgba(79,158,255,.15);
 }
 .vsl.playing{cursor:default}
-.vsl.playing .vsl-overlay{color:rgba(255,255,255,.75)}
 .vsl{cursor:pointer}
 
 /* CTA hero block (button + price anchor) */

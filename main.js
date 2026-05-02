@@ -133,18 +133,37 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 });
 
 
-/* 9. VSL — visual feedback on play (placeholder until real video is embedded) */
+/* 9. VSL — load Vimeo thumbnail as poster, click to swap in player */
 (function vslHandler() {
   const vsl = document.getElementById('vsl');
   if (!vsl) return;
   const playBtn = vsl.querySelector('.vsl-play');
-  const overlay = vsl.querySelector('.vsl-overlay');
-  if (!playBtn) return;
+  const vimeoId = vsl.dataset.vimeoId;
+  if (!playBtn || !vimeoId) return;
+
+  // Fetch thumbnail via Vimeo's oEmbed (no auth needed)
+  fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoId}&width=1280`)
+    .then(r => r.json())
+    .then(data => {
+      if (data && data.thumbnail_url) {
+        // Request a larger version: Vimeo URLs often end in _640 — strip the size suffix
+        const hi = data.thumbnail_url.replace(/_\d+(x\d+)?(\.\w+)?$/, '');
+        vsl.style.backgroundImage = `url("${hi}")`;
+      }
+    })
+    .catch(() => {});
+
   vsl.addEventListener('click', () => {
+    if (vsl.classList.contains('playing')) return;
     vsl.classList.add('playing');
-    if (overlay) overlay.textContent = 'Embed your YouTube/Vimeo iframe here.';
-    playBtn.style.opacity = '0.4';
-    playBtn.style.pointerEvents = 'none';
+    playBtn.remove();
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.setAttribute('frameborder', '0');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    vsl.appendChild(iframe);
   });
 })();
 
