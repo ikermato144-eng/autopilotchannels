@@ -627,6 +627,12 @@ footer a{color:var(--muted);transition:color .2s}
 footer a:hover{color:var(--accent)}
 footer .links{margin-top:16px}
 
+.eu-vat[hidden]{display:none !important}
+.stack-total .eu-vat[data-eu-vat]{text-align:right}
+.final-price .eu-vat{display:block;margin-top:2px}
+.sticky-cta .sc-price.has-eu-vat{display:inline-grid;grid-template-columns:auto 1fr;row-gap:0}
+.sticky-cta .sc-price .eu-vat{grid-column:1/-1;font-size:11px;font-weight:600;line-height:1.2;white-space:nowrap}
+
 /* =================  RESPONSIVE  ================= */
 @media (max-width:900px){
   .urgency-bar{font-size:11px;gap:8px;padding:8px 12px}

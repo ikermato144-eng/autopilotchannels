@@ -347,7 +347,9 @@
       <div class="stack-total">
         <div class="total-row"><span>Total value:</span><span><s>$5,620</s></span></div>
         <div class="total-row big"><span>Today, one payment:</span><span class="blue">$297</span></div>
+        <p class="muted small eu-vat" data-eu-vat="29700" hidden></p>
         <p class="muted small">Pay once. Yours for life.</p>
+        <p class="muted small eu-vat" data-eu-vat-b2b hidden>EU businesses outside Spain with a valid VAT number pay no VAT (reverse charge).</p>
       </div>
 
       <div id="checkout"></div>
@@ -458,6 +460,7 @@
       <div class="final-cta-actions">
         <p class="final-price">
           Today: <b>$297</b> &nbsp;·&nbsp; tomorrow: <s>$497</s>
+          <span class="small eu-vat" data-eu-vat="29700" data-eu-vat-label="Today:" hidden></span>
         </p>
         <a class="btn-primary big full" href="https://buy.stripe.com/eVqeVc5V6eL47eP2Uybwk00" target="_blank" rel="noopener">Yes, I want this</a>
 
@@ -469,6 +472,7 @@
   <footer>
     <p class="muted small">Questions? <a href="mailto:contactryanyta@gmail.com" style="color:inherit;text-decoration:underline">contactryanyta@gmail.com</a></p>
     <p class="muted small">© Autopilot Channels · <a href="legal.html" style="color:inherit">Terms, Refunds &amp; Privacy</a></p>
+    <p class="muted small">IKERPRIME, S.L. · NIF B26902544 · VAT ESB26902544 · Calle Almirante Mourelle 50, 5º D, 15011 A Coruña (España)</p>
   </footer>
 
   <!-- Lightbox for proof screenshots -->
@@ -479,9 +483,85 @@
 
   <!-- Sticky mobile CTA -->
   <a class="sticky-cta" href="https://buy.stripe.com/eVqeVc5V6eL47eP2Uybwk00" target="_blank" rel="noopener">
-    <span class="sc-price"><s>$497</s> <b>$297</b></span>
+    <span class="sc-price"><s>$497</s> <b>$297</b><span class="eu-vat" data-eu-vat="29700" data-eu-vat-short hidden></span></span>
     <span class="sc-btn">Yes, I want this</span>
   </a>
+
+  <script id="eu-vat">
+  (function () {
+    var RATES = {AT:20, BE:21, BG:20, CY:19, CZ:21, DE:19, DK:25, EE:24, ES:21, FI:25.5,
+      FR:20, GR:24, HR:25, HU:27, IE:23, IT:22, LT:21, LU:17, LV:21, MT:18, NL:21, PL:23,
+      PT:23, RO:21, SE:25, SI:22, SK:23};
+    var NAMES = {AT:'Austria', BE:'Belgium', BG:'Bulgaria', CY:'Cyprus', CZ:'Czechia',
+      DE:'Germany', DK:'Denmark', EE:'Estonia', ES:'Spain', FI:'Finland', FR:'France',
+      GR:'Greece', HR:'Croatia', HU:'Hungary', IE:'Ireland', IT:'Italy', LT:'Lithuania',
+      LU:'Luxembourg', LV:'Latvia', MT:'Malta', NL:'Netherlands', PL:'Poland',
+      PT:'Portugal', RO:'Romania', SE:'Sweden', SI:'Slovenia', SK:'Slovakia'};
+    var ZONES = {
+      'Europe/Madrid':'ES', 'Atlantic/Canary':'', 'Africa/Ceuta':'',
+      'Europe/Lisbon':'PT', 'Atlantic/Madeira':'', 'Atlantic/Azores':'',
+      'Europe/Paris':'FR', 'Europe/Monaco':'',
+      'Europe/Berlin':'DE', 'Europe/Busingen':'',
+      'Europe/Rome':'IT', 'Europe/Vatican':'', 'Europe/San_Marino':'',
+      'Europe/Amsterdam':'NL', 'Europe/Brussels':'BE', 'Europe/Luxembourg':'LU',
+      'Europe/Vienna':'AT', 'Europe/Dublin':'IE', 'Europe/Warsaw':'PL',
+      'Europe/Prague':'CZ', 'Europe/Bratislava':'SK', 'Europe/Budapest':'HU',
+      'Europe/Bucharest':'RO', 'Europe/Sofia':'BG', 'Europe/Athens':'GR',
+      'Europe/Helsinki':'FI', 'Europe/Mariehamn':'', 'Europe/Stockholm':'SE',
+      'Europe/Copenhagen':'DK', 'Europe/Tallinn':'EE', 'Europe/Riga':'LV',
+      'Europe/Vilnius':'LT', 'Europe/Malta':'MT', 'Europe/Zagreb':'HR',
+      'Europe/Ljubljana':'SI', 'Asia/Nicosia':'CY', 'Europe/Nicosia':'CY',
+      'Asia/Famagusta':''
+    };
+
+    function countryFromTimeZone(tz) {
+      var cc = Object.prototype.hasOwnProperty.call(ZONES, tz) ? ZONES[tz] : '';
+      return cc && RATES[cc] ? cc : null;
+    }
+    function grossCents(netCents, rate) {
+      return netCents + Math.round(netCents * rate / 100);
+    }
+    function money(cents) {
+      var parts = (cents / 100).toFixed(2).split('.');
+      return '$' + parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '.' + parts[1];
+    }
+    function vatText(netCents, cc, short) {
+      var text = money(grossCents(netCents, RATES[cc])) + ' incl. VAT';
+      return short ? text : text + ' (' + NAMES[cc] + '\u00a0' + RATES[cc] + '%)';
+    }
+    function browserTimeZone() {
+      try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; }
+      catch (e) { return ''; }
+    }
+    function apply(doc, tz) {
+      var cc = countryFromTimeZone(tz);
+      if (!cc) return null;
+      var lines = doc.querySelectorAll('[data-eu-vat]');
+      for (var i = 0; i < lines.length; i++) {
+        var net = parseInt(lines[i].getAttribute('data-eu-vat'), 10);
+        if (!(net > 0)) continue;
+        var label = lines[i].getAttribute('data-eu-vat-label');
+        lines[i].textContent = (label ? label + ' ' : '') +
+          vatText(net, cc, lines[i].hasAttribute('data-eu-vat-short'));
+        lines[i].parentNode.classList.add('has-eu-vat');
+        lines[i].hidden = false;
+      }
+      if (cc !== 'ES') {
+        var notes = doc.querySelectorAll('[data-eu-vat-b2b]');
+        for (var j = 0; j < notes.length; j++) notes[j].hidden = false;
+      }
+      return cc;
+    }
+
+    if (typeof module === 'object' && module && module.exports) {
+      module.exports = {RATES: RATES, NAMES: NAMES, ZONES: ZONES, countryFromTimeZone: countryFromTimeZone,
+        vatText: vatText, browserTimeZone: browserTimeZone, apply: apply};
+    }
+    if (typeof document !== 'undefined') {
+      try { apply(document, browserTimeZone()); } catch (e) {}
+    }
+  })();
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
